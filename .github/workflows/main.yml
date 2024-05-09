@@ -1,5 +1,7 @@
 name: Build project
 on: [push, pull_request]
+permissions:
+  contents: write
 
 jobs:
   buildWebGL:
@@ -58,7 +60,7 @@ jobs:
       - uses: actions/download-artifact@v4.1.7
         with:
           name: build-WebGL
-          path: build
+          path: build/WebGL
           
       - name: "Deploy"
         uses: JamesIves/github-pages-deploy-action@v4.6.0
