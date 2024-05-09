@@ -48,22 +48,3 @@ jobs:
         with:
           name: build-WebGL
           path: build/WebGL
-          
-  deployPages:
-    needs: buildWebGL
-    name: "Deploy to GitHub Pages"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - uses: actions/download-artifact@v4.1.7
-        with:
-          name: build-WebGL
-          path: build/WebGL
-          
-      - name: "Deploy"
-        uses: JamesIves/github-pages-deploy-action@v4.6.0
-        with:
-          branch: gh-pages
-          folder: build/WebGL
