@@ -2,8 +2,8 @@ name: Build project
 on: [push, pull_request]
 
 jobs:
-  buildForAllSupportedPlatforms:
-    name: 'Build for ${{ matrix.targetPlatform }}'
+  buildWebGL:
+    name: Build for WebGL 🖥️
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -35,8 +35,8 @@ jobs:
           path: 'build/${{ matrix.targetPlatform }}'
           
   deployPages:
-    needs: buildForAllSupportedPlatforms
-    name: "Deploy to Github Pages \U0001F680"
+    needs: buildWebGL
+    name: "Deploy to GitHub Pages"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -45,7 +45,7 @@ jobs:
         with:
           name: build-WebGL
           path: build
-      - name: "Deploy \U0001F680"
+      - name: "Deploy"
         uses: JamesIves/github-pages-deploy-action@v4.6.0
         with:
           branch: gh-pages
