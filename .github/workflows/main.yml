@@ -44,7 +44,7 @@ jobs:
         with:
           targetPlatform: WebGL
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v3.0.1
         with:
           name: build-WebGL
           path: build/WebGL
